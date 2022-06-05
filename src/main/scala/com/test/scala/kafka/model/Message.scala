@@ -1,5 +1,5 @@
 package com.test.scala.kafka.model
 
-class Message(message: String) {
+class Message(val message: String) {
 
 }

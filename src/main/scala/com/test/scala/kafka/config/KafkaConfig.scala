@@ -1,14 +1,17 @@
 package com.test.scala.kafka.config
 
+import java.util
 import java.util.Properties
+import java.util.Map
 
-class KafkaConfig(props: Properties) {
+class KafkaConfig(props : util.Map[String, Object]) {
 
-  def getBootStrapServer() = {
-    props.getProperty("bootstrap-servers")
+
+  def getBootStrapServer: String = {
+    props.get("bootstrap-servers").toString
   }
 
-  def getProducerTopicName() = {
-    props.getProperty("producer-topic-name")
+  def getProducerTopicName: String = {
+    props.get("producer-topic-name").toString
   }
 }
