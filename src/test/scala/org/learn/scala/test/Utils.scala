@@ -1,4 +1,4 @@
-package test
+package org.learn.scala.test
 
 import org.apache.spark.sql.SparkSession
 

@@ -1,4 +1,4 @@
-package test
+package org.learn.scala.test
 
 import org.learn.scala.test.Constants.{DATABASE_URL, PARENT_DIR}
 import org.learn.scala.test.Utils.createSparkSession
@@ -153,17 +153,17 @@ class Test extends AnyFunSuite with BeforeAndAfterAll {
   }
 
   test("Test Spark H2") {
-    val sql: String =
-      """
-        |create table test2(ID INT PRIMARY KEY,NAME VARCHAR(500));
-        |insert into test2 values (1,'A');
-        |insert into test2 values (2,'B');
-        |insert into test2 values (3,'C');""".stripMargin
-    stm.execute(sql)
-    val rs = stm.executeQuery("""select * from test2""")
+//    val sql: String =
+//      """
+//        |create table test2(ID INT PRIMARY KEY,NAME VARCHAR(500));
+//        |insert into test2 values (1,'A');
+//        |insert into test2 values (2,'B');
+//        |insert into test2 values (3,'C');""".stripMargin
+//    stm.execute(sql)
+//    val rs = stm.executeQuery("""select * from test2""")
     val sparkSession = createSparkSession()
     val properties: Properties = new Properties()
-    val testDf = sparkSession.read.jdbc(url = DATABASE_URL, table = "test2", properties= properties)
+    val testDf = sparkSession.read.jdbc(url = DATABASE_URL, table = "test5", properties= properties)
     println(testDf.count())
   }
 
