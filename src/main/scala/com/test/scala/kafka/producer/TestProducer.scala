@@ -38,18 +38,18 @@ class TestProducer(topicName: String) {
 
 
   val message = new Message("testMessage")
-  kafkaProducer.send(new ProducerRecord[String, Message](kafkaConfig.getProducerTopicName,"testKey4", message), new producerCallback)
+  kafkaProducer.send(new ProducerRecord[String, Message](kafkaConfig.getProducerTopicName,"testKey4", message), new ProducerCallback)
   kafkaProducer.flush()
 
 }
 
-private class producerCallback extends Callback {
+private class ProducerCallback extends Callback {
 
   override def onCompletion(metadata: RecordMetadata, exception: Exception): Unit = {
     if (exception != null) {
       exception.printStackTrace()
     } else {
-      println(s" $metadata.topic() : + $metadata.offset() : + ${metadata.partition()}")
+      println(s" $metadata.topic : + $metadata.offset : + $metadata.partition")
     }
 
   }
